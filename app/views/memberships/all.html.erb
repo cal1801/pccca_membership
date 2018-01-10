@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Organization</th>
+        <th scope="col">Membership Type</th>
+        <th scope="col">Valid Year</th>
+      </tr>
+    </thead>
+    <tbody>
+      <%@members.each do |member|%>
+        <tr>
+          <td><%='<span class="oi oi-ban" style="color:red" data-toggle="tooltip" data-placement="top" title="Payment Error" aria-hidden="true"></span>'.html_safe if member.payment_date.nil?%> <%=member.first_name%> <%=member.last_name%></th>
+          <td><%=member.organization%></td>
+          <td><%=member.membership_type%></td>
+          <td><%=member.valid_year%></td>
+        </tr>
+      <%end%>
+    </tbody>
+  </table>
+</div>

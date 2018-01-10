@@ -1,0 +1,15 @@
+<div class="row mt-3">
+  <div class="col-sm-12">
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Thank you!</h5>
+        <h6 class="card-subtitle mb-2">We have created new memberships for:</h6>
+        <p class="card-text">
+          <%@members.each do |member|%>
+            <%=member.tr("\"", "")%><br />
+          <%end%>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

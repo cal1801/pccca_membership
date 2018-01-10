@@ -1,5 +1,13 @@
 Rails.application.routes.draw do
-  resources :memberships
+  resources :memberships do
+    collection do
+      get 'error'
+      get 'success'
+    end
+  end
+
+  get 'register' => 'memberships#register'
+  get 'all' => 'memberships#all'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

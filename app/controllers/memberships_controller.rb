@@ -1,10 +1,26 @@
 class MembershipsController < ApplicationController
+  require 'paypal-sdk-rest'
+  include PayPal::SDK::REST
+
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
 
   # GET /memberships
   # GET /memberships.json
   def index
-    @memberships = Membership.all
+    @type = params["type"]
+    @members = []
+
+    case @type
+      when 'org'
+        4.times do
+          @members << Membership.new
+        end
+    end
+    #@memberships = Membership.all
+  end
+
+  def all
+    @members = Membership.all
   end
 
   # GET /memberships/1
@@ -24,17 +40,61 @@ class MembershipsController < ApplicationController
   # POST /memberships
   # POST /memberships.json
   def create
-    @membership = Membership.new(membership_params)
+    # Build Payment object
+    @payment = Payment.new({
+      :intent =>  "sale",
+      :payer =>  {
+        :payment_method =>  "paypal"
+      },
+      :redirect_urls => {
+        :return_url => "#{success_memberships_url}",
+        :cancel_url => "#{error_memberships_url}"
+      },
+      :transactions =>  [{
+        :item_list => {
+          :items => [{
+            :name => "#{params[:type]}",
+            :price => "#{params[:price]}",
+            :currency => "USD",
+            :quantity => 1
+          }]
+        },
+        :amount =>  {
+          :total =>  "#{params[:price]}",
+          :currency =>  "USD"
+        },
+        :description =>  "This is the payment for an #{params[:type]} membership."
+      }]
+    })
 
-    respond_to do |format|
-      if @membership.save
-        format.html { redirect_to @membership, notice: 'Membership was successfully created.' }
-        format.json { render :show, status: :created, location: @membership }
-      else
-        format.html { render :new }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
+    if @payment.create
+      params[:members].each do |member|
+        member[:organization] = params["organization"]
+        member[:address1] = params[:address1]
+        member[:address2] = params[:address2]
+        member[:city] = params[:city]
+        member[:state] = params[:state]
+        member[:zipcode] = params[:zipcode]
+        member[:url] = params[:url]
+        member[:fax] = params[:fax]
+        member[:payment_id] = "pending"
+
+        member = Membership.create(member_params(member))
       end
+
+      # Capture redirect url
+      redirect_url = @payment.links.find{|v| v.rel == "approval_url" }.href
+      redirect_to redirect_url
+    else
+      @payment.error  # Error Hash
     end
+
+    #@membership = Membership.new(membership_params)
+
+    #respond_to do |format|
+      #format.html { redirect_to :index, notice: "#{@created.count} Memberships #{'were'.pluralize(@created.count)} successfully created." }
+      #format.json { render :show, status: :created, location: @membership }
+    #end
   end
 
   # PATCH/PUT /memberships/1
@@ -61,14 +121,30 @@ class MembershipsController < ApplicationController
     end
   end
 
+  def error
+    byebug
+  end
+
+  def success
+    @members = []
+    Membership.where(payment_id: "pending").each do |member|
+      member.update_attributes(payment_date: Date.today(), payment_id: params["paymentid"])
+      @members << member.first_name + " " + member.last_name + " - (" + member.membership_type + ")"
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_membership
       @membership = Membership.find(params[:id])
     end
 
+    def member_params(member)
+      member.permit(:first_name, :last_name, :address1, :address2, :city, :state, :zipcode, :email, :phone_number, :fax, :membership_type, :organization, :url, :valid_year, :payment_date, :payment_id)
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def membership_params
-      params.require(:membership).permit(:first_name, :last_name, :address1, :address2, :city, :state, :zipcode, :email, :phone_number, :fax, :membership_type, :organization, :url, :valid_year, :payment_date)
+      params.require(:membership).permit(:first_name, :last_name, :address1, :address2, :city, :state, :zipcode, :email, :phone_number, :fax, :membership_type, :organization, :url, :valid_year, :payment_date, :payment_id)
     end
 end
