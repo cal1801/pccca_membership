@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>PCCCA Membership System</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application', 'bootstrap-growl.min' %>
+  <%= csrf_meta_tags %>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/open-iconic/1.1.1/font/css/open-iconic-bootstrap.css">
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.css"/>
+  <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.10.16/datatables.min.js"></script>
+</head>
+<body>
+
+  <%if !!notice%>
+    <script>
+      $.bootstrapGrowl(<%= notice %>, {
+        ele: 'body', // which element to append to
+        type: 'info', // (null, 'info', 'danger', 'success')
+        offset: {from: 'top', amount: 20}, // 'top', or 'bottom'
+        align: 'right', // ('left', 'right', or 'center')
+        width: auto, // (integer, or 'auto')
+        delay: 3000, // Time while the message will be displayed. It's not equivalent to the *demo* timeOut!
+        allow_dismiss: true, // If true then will display a cross to close the popup.
+        stackup_spacing: 10 // spacing between consecutively stacked growls.
+      });
+    </script>
+  <%end%>
+
+  <%= render "layouts/nav" %>
+
+  <main role="main" class="container-fluid">
+    <%= yield %>
+  </main>
+
+  <script>
+    $(function () {
+      $('[data-toggle="tooltip"]').tooltip()
+    })
+  </script>
+</body>
+</html>

@@ -27,6 +27,7 @@ class MembershipsController < ApplicationController
 
   def all
     @members = Membership.all.order(:valid_year)
+    render layout: "all_layout"
   end
 
   # GET /memberships/1
