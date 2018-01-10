@@ -26,4 +26,6 @@ development:
 
 production:
   <<: *default
-  mode: sandbox
+  mode: live
+  client_id: ENV['client_id']
+  client_secret: ENV['EDPoQxkZQnoV2e7fdJZ908niJ2I0qrsImlOu-jcHPvlGrMx_BX3wowMpLwsv0A7tUE1wPkl-5L1-flHS']
