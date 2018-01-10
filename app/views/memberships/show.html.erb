@@ -1,0 +1,77 @@
+<p>
+  <strong>First name:</strong>
+  <%= @membership.first_name %>
+</p>
+
+<p>
+  <strong>Last name:</strong>
+  <%= @membership.last_name %>
+</p>
+
+<p>
+  <strong>Address1:</strong>
+  <%= @membership.address1 %>
+</p>
+
+<p>
+  <strong>Address2:</strong>
+  <%= @membership.address2 %>
+</p>
+
+<p>
+  <strong>City:</strong>
+  <%= @membership.city %>
+</p>
+
+<p>
+  <strong>State:</strong>
+  <%= @membership.state %>
+</p>
+
+<p>
+  <strong>Zipcode:</strong>
+  <%= @membership.zipcode %>
+</p>
+
+<p>
+  <strong>Email:</strong>
+  <%= @membership.email %>
+</p>
+
+<p>
+  <strong>Phone number:</strong>
+  <%= @membership.phone_number %>
+</p>
+
+<p>
+  <strong>Fax:</strong>
+  <%= @membership.fax %>
+</p>
+
+<p>
+  <strong>Membership type:</strong>
+  <%= @membership.membership_type %>
+</p>
+
+<p>
+  <strong>Organization:</strong>
+  <%= @membership.organization %>
+</p>
+
+<p>
+  <strong>Url:</strong>
+  <%= @membership.url %>
+</p>
+
+<p>
+  <strong>Valid year:</strong>
+  <%= @membership.valid_year %>
+</p>
+
+<p>
+  <strong>Payment date:</strong>
+  <%= @membership.payment_date %>
+</p>
+
+<%= link_to 'Edit', edit_membership_path(@membership) %> |
+<%= link_to 'Back', memberships_path %>
