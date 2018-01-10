@@ -1,4 +1,4 @@
-<h2>Small Camp Membership for <%=Time.current.year%> ($200)</h2>
+<h2>Small Camp Membership ($200)</h2>
 <p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Small Camp Membership, please click on the link at the bottom of the screen. Your first additional staff person is $50 and each additional staff member after that is only $25 per person.</p>
 <%= form_tag("memberships", method: "post", class: "form-inline") do%>
   <%=hidden_field_tag "type", "Small Camp"%>
