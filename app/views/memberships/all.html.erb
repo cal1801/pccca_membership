@@ -3,17 +3,21 @@
     <thead>
       <tr>
         <th scope="col">Name</th>
+        <th scope="col">Email</th>
         <th scope="col">Organization</th>
         <th scope="col">Membership Type</th>
+        <th scope="col">Payment Date</th>
         <th scope="col">Valid Year</th>
       </tr>
     </thead>
     <tbody>
       <%@members.each do |member|%>
         <tr>
-          <td><%='<span class="oi oi-ban" style="color:red" data-toggle="tooltip" data-placement="top" title="Payment Error" aria-hidden="true"></span>'.html_safe if member.payment_id == "pending"%> <%=member.first_name%> <%=member.last_name%></th>
+          <td><%='<span class="oi oi-ban" style="color:red" data-toggle="tooltip" data-placement="top" title="Payment Error" aria-hidden="true"></span>'.html_safe if member.payment_id == "pending"%> <%=member.first_name%> <%=member.last_name%></td>
+          <td><%=link_to "#{member.email}", "mailto:#{member.email}"%></td>
           <td><%=member.organization%></td>
           <td><%=member.membership_type%></td>
+          <td><%=member.payment_date%></td>
           <td><%=member.valid_year%></td>
         </tr>
       <%end%>
@@ -24,7 +28,7 @@
 <script>
   $(document).ready(function() {
       $('#membership_table').DataTable({
-        order: [[ 3, 'desc' ], [ 1, 'asc' ]]
+        order: [[ 4, 'desc' ], [ 2, 'asc' ]]
       });
   } );
 </script>
