@@ -1,0 +1,128 @@
+<h2>Small Camp Membership for <%=Time.current.year%> ($200)</h2>
+<p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Small Camp Membership, please click on the link at the bottom of the screen. Your first additional staff person is $50 and each additional staff member after that is only $25 per person.</p>
+<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+  <%=hidden_field_tag "type", "Small Camp"%>
+  <%=hidden_field_tag "price", "200"%>
+  <div class="row mb-4">
+    <div class="form-group col-sm-12">
+      <%=label_tag :organization, "Organization", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :organization, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+    <div class="form-group col-sm-12">
+      <%=label_tag :address1, "Address", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :address1, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+    <div class="form-group col-sm-12">
+      <%=label_tag :address2, "", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :address2, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+    <div class="form-group col-sm-12">
+      <%=label_tag :city, "City", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :city, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+    <div class="form-group col-sm-12">
+      <%=label_tag :state, "State/Province", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :state, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+    <div class="form-group col-sm-12">
+      <%=label_tag :zipcode, "Postal Code", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=text_field_tag :zipcode, "", class: "form-control ml-3 mb-2 col-md-6"%>
+    </div>
+  </div>
+
+  <div class="row mb-4">
+    <p><strong>Staff Person</strong> (Individual Membership)</p>
+    <%=fields_for 'members[]', @members[0] do |m|%>
+      <div class="form-group col-sm-12">
+        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <%=m.hidden_field :membership_type, value: "Small_Camp_Individual"%>
+      <%=m.hidden_field :valid_year, value: Time.current.year%>
+    <%end%>
+  </div>
+
+  <div class="row mb-4">
+    <p><strong>Two Board/Committee Members</strong> (Associate Memberships) <i>please no staff members</i></p>
+    <%=fields_for 'members[]', @members[1] do |m|%>
+      <div class="form-group col-sm-12">
+        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <%=m.hidden_field :membership_type, value: "Small_Camp_Associate"%>
+      <%=m.hidden_field :valid_year, value: Time.current.year%>
+    <%end%>
+  </div>
+  <div class="row mb-4">
+    <%=fields_for 'members[]', @members[2] do |m|%>
+      <div class="form-group col-sm-12">
+        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <%=m.hidden_field :membership_type, value: "Small_Camp_Associate"%>
+      <%=m.hidden_field :valid_year, value: Time.current.year%>
+    <%end%>
+  </div>
+
+  <div class="row mb-4">
+    <p><strong>Head of Governing Body</strong> (Associate Membership)</p>
+    <%=fields_for 'members[]', @members[3] do |m|%>
+      <div class="form-group col-sm-12">
+        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <%=m.hidden_field :membership_type, value: "Small_Camp_Associate"%>
+      <%=m.hidden_field :valid_year, value: Time.current.year%>
+    <%end%>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block mb-5">Register for Small Camp Membership</button>
+<% end %>
