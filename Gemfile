@@ -25,6 +25,8 @@ gem 'bootstrap', '~> 4.0.0.beta3'
 
 gem 'paypal-sdk-rest'
 
+gem 'rails_12factor'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
