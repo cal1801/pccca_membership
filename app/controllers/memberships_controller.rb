@@ -122,7 +122,7 @@ class MembershipsController < ApplicationController
   end
 
   def error
-    byebug
+
   end
 
   def success
