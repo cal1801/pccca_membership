@@ -1,11 +1,22 @@
-<h2>Organizational Membership for <%=Time.current.year%> ($350)</h2>
-<p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Organizational Membership, please click on the link at the bottom of the screen. Your first additional staff person is $50 and each additional staff member after that is only $25 per person.</p>
+<h2>Business Membership for <%=Time.current.year%> ($520)</h2>
+<p>Your business or organization has the opportunity to make important connections with Presbyterian camps and conference centers. If you have products and services that could support the ministries of these 150 sites in the United States and Canada, you will want to consider a membership that offers visibility through PCCCA’s enewsletters, website and Facebook page; use of the business member logo; and priority access and discounts on exhibit hall booths and sponsorship opportunities. To learn more about this program, please see the <%=link_to "PCCCA Business Membership brochure", "http://www.pccca.net/images/pdfs/BusinessMembership.pdf"%>.</p>
+<p>This membership level receives:</p>
+<ul>
+  <li>priority status for exhibit hall registration at the PCCCA Annual Conference</li>
+  <li>10% discount on exhibit hall booth registration and sponsorship opportunities at the PCCCA Annual Conference</li>
+  <li>use of the PCCCA business member logo for your website and publications</li>
+  <li>a listing on the new Business Membership page on the PCCCA website</li>
+  <li>a new member announcement in PCCCA’s enewsletter</li>
+  <li>one new product announcement on PCCCA’s Facebook page</li>
+  <li>one "From One of Our Business Members" article in PCCCA’s enewsletter</li>
+  <li>one postal mailing using the PCCCA mailing list (you ship the mailing with postage to us and we send it with mailing labels that include the name of the decision makers at all 160 Presbyterian camps and conference centers in the United States and Canada)</li>
+</ul>
 <%= form_tag("memberships", method: "post", class: "form-inline") do%>
   <%=hidden_field_tag "type", "Organizational"%>
-  <%=hidden_field_tag "price", "350"%>
+  <%=hidden_field_tag "price", "520"%>
   <div class="row mb-4">
     <div class="form-group col-sm-12">
-      <%=label_tag :organization, "Organization", class: "col-md-2", style: "justify-content: flex-end"%>
+      <%=label_tag :organization, "Business/Organization", class: "col-md-2", style: "justify-content: flex-end"%>
       <%=text_field_tag :organization, "", class: "form-control ml-3 mb-2 col-md-6"%>
     </div>
     <div class="form-group col-sm-12">
@@ -31,7 +42,7 @@
   </div>
 
   <div class="row mb-4">
-    <p><strong>Staff Person</strong> (Individual Membership)</p>
+    <p><strong>Staff Person</strong> (you may list up to three, but must list at least one)</p>
     <%=fields_for 'members[]', @members[0] do |m|%>
       <div class="form-group col-sm-12">
         <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
@@ -49,13 +60,12 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Individual"%>
+      <%=m.hidden_field :membership_type, value: "Business_Staff"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
 
   <div class="row mb-4">
-    <p><strong>Two Board/Committee Members</strong> (Associate Memberships) <i>please no staff members</i></p>
     <%=fields_for 'members[]', @members[1] do |m|%>
       <div class="form-group col-sm-12">
         <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
@@ -73,10 +83,11 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
+      <%=m.hidden_field :membership_type, value: "Business_Staff"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
+
   <div class="row mb-4">
     <%=fields_for 'members[]', @members[2] do |m|%>
       <div class="form-group col-sm-12">
@@ -95,31 +106,7 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
-      <%=m.hidden_field :valid_year, value: Time.current.year%>
-    <%end%>
-  </div>
-
-  <div class="row mb-4">
-    <p><strong>Head of Governing Body</strong> (Associate Membership)</p>
-    <%=fields_for 'members[]', @members[3] do |m|%>
-      <div class="form-group col-sm-12">
-        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
-        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
-      </div>
-      <div class="form-group col-sm-12">
-        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
-        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
-      </div>
-      <div class="form-group col-sm-12">
-        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
-        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
-      </div>
-      <div class="form-group col-sm-12">
-        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
-        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
-      </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
+      <%=m.hidden_field :membership_type, value: "Business_Staff"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>

@@ -11,8 +11,14 @@ class MembershipsController < ApplicationController
     @members = []
 
     case @type
-      when 'org'
+      when 'org', 'twoyrorg'
         4.times do
+          @members << Membership.new
+        end
+      when 'student', 'assoc'
+        @members << Membership.new
+      when
+        3.times do
           @members << Membership.new
         end
     end

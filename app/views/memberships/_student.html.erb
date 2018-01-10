@@ -1,0 +1,50 @@
+<h2>Student Membership for <%=Time.current.year%> ($25)</h2>
+<p>This special rate is extended to full or part-time students in an undergraduate or graduate program.</p>
+<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+  <%=hidden_field_tag "type", "Student"%>
+  <%=hidden_field_tag "price", "25"%>
+  <div class="row mb-4">
+    <%=fields_for 'members[]', @members[0] do |m|%>
+      <div class="form-group col-sm-12">
+        <%=m.label :first_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :first_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :last_name, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :last_name, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=label_tag :address1, "Address", class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=text_field_tag :address1, "", class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=label_tag :address2, "", class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=text_field_tag :address2, "", class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=label_tag :city, "City", class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=text_field_tag :city, "", class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=label_tag :state, "State/Province", class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=text_field_tag :state, "", class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=label_tag :zipcode, "Postal Code", class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=text_field_tag :zipcode, "", class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :email, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :email, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <div class="form-group col-sm-12">
+        <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
+        <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
+      </div>
+      <%=m.hidden_field :membership_type, value: "2yr_Org_Individual"%>
+      <%=m.hidden_field :valid_year, value: Time.current.year%>
+    <%end%>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

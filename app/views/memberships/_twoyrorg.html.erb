@@ -1,8 +1,8 @@
-<h2>Organizational Membership for <%=Time.current.year%> ($350)</h2>
-<p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Organizational Membership, please click on the link at the bottom of the screen. Your first additional staff person is $50 and each additional staff member after that is only $25 per person.</p>
+<h2>Two-Year Organizational Membership for <%=Time.current.year%> and <%=Time.current.year + 1.year%> ($665)</h2>
+<p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Organizational Membership, please click on the link at the bottom of the screen. Your first additional staff person is $95 and each additional staff member after that is only $48 per person.</p>
 <%= form_tag("memberships", method: "post", class: "form-inline") do%>
-  <%=hidden_field_tag "type", "Organizational"%>
-  <%=hidden_field_tag "price", "350"%>
+  <%=hidden_field_tag "type", "2 Year Organizational"%>
+  <%=hidden_field_tag "price", "665"%>
   <div class="row mb-4">
     <div class="form-group col-sm-12">
       <%=label_tag :organization, "Organization", class: "col-md-2", style: "justify-content: flex-end"%>
@@ -49,7 +49,7 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Individual"%>
+      <%=m.hidden_field :membership_type, value: "2yr_Org_Individual"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
@@ -73,7 +73,7 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
+      <%=m.hidden_field :membership_type, value: "2yr_Org_Associate"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
@@ -95,7 +95,7 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
+      <%=m.hidden_field :membership_type, value: "2yr_Org_Associate"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
@@ -119,7 +119,7 @@
         <%=m.label :phone_number, class: "col-md-2", style: "justify-content: flex-end"%>
         <%=m.text_field :phone_number, class: "form-control ml-3 mb-2 col-md-6"%>
       </div>
-      <%=m.hidden_field :membership_type, value: "Org_Associate"%>
+      <%=m.hidden_field :membership_type, value: "2yr_Org_Associate"%>
       <%=m.hidden_field :valid_year, value: Time.current.year%>
     <%end%>
   </div>
