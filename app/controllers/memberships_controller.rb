@@ -20,7 +20,7 @@ class MembershipsController < ApplicationController
   end
 
   def all
-    @members = Membership.all
+    @members = Membership.all.order(:valid_year)
   end
 
   # GET /memberships/1

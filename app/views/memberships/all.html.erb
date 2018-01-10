@@ -1,5 +1,5 @@
-<div class="col-sm-12">
-  <table class="table table-striped">
+<div class="col-sm-12 mt-3">
+  <table class="table table-striped" id="membership_table">
     <thead>
       <tr>
         <th scope="col">Name</th>
@@ -11,7 +11,7 @@
     <tbody>
       <%@members.each do |member|%>
         <tr>
-          <td><%='<span class="oi oi-ban" style="color:red" data-toggle="tooltip" data-placement="top" title="Payment Error" aria-hidden="true"></span>'.html_safe if member.payment_date.nil?%> <%=member.first_name%> <%=member.last_name%></th>
+          <td><%='<span class="oi oi-ban" style="color:red" data-toggle="tooltip" data-placement="top" title="Payment Error" aria-hidden="true"></span>'.html_safe if member.payment_id == "pending"%> <%=member.first_name%> <%=member.last_name%></th>
           <td><%=member.organization%></td>
           <td><%=member.membership_type%></td>
           <td><%=member.valid_year%></td>
@@ -20,3 +20,11 @@
     </tbody>
   </table>
 </div>
+
+<script>
+  $(document).ready(function() {
+      $('#membership_table').DataTable({
+        order: [[ 3, 'desc' ], [ 1, 'asc' ]]
+      });
+  } );
+</script>
