@@ -129,7 +129,13 @@ class MembershipsController < ApplicationController
   end
 
   def error
+    @members = []
+    Membership.where(payment_id: "pending").each do |member|
+      member.update_attribute("payment_id", "no payment")
+      @members << member.first_name + " " + member.last_name + " - (" + member.membership_type + ")"
+    end
 
+    MembershipMailer.error_email(@members).deliver_later
   end
 
   def success
