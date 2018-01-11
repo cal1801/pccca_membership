@@ -85,8 +85,8 @@ Rails.application.configure do
     address:              'mail.pccca.net',
     port:                 587,
     domain:               'pccca.net',
-    user_name:            'joel@pccca.net',
-    password:             'Joshu@11',
+    user_name:            'webmaster@pccca.net',
+    password:             'Gy*a7nsG',
     authentication:       'plain',
     enable_starttls_auto: true
   }
