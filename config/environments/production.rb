@@ -77,18 +77,6 @@ Rails.application.configure do
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
 
-  config.action_mailer.delivery_method = :sendmail
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.default :charset => "utf-8"
-  config.action_mailer.default_url_options = {host:'membership.pccca.net'}
-  config.action_mailer.smtp_settings = {
-    address:              'mail.pccca.net',
-    port:                 587,
-    domain:               'pccca.net',
-    user_name:            'webmaster@pccca.net',
-    password:             'Gy*a7nsG',
-    authentication:       'plain',
-    enable_starttls_auto: true
-  }
+  config.action_mailer.default_url_options = { host: 'membership.pccca.net' }
 
 end

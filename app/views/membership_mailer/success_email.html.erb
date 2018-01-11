@@ -1,0 +1,19 @@
+<h3>We have a new PCCCA Member!!!</h3>
+<p>
+  Isn't it great to have new friends?! Well Joel, its your lucky day. Someone has actually PAID to be your close friend! Make sure you reach out to them!
+</p>
+
+<%unless @organization.nil?%>
+  <p>
+    Organization: <%=@organization%>
+  </p>
+<%end%>
+<p>
+  New <%='Member'.pluralize(@members.count)%>:<br />
+  <%@members.each do |member|%>
+    <%=member%><br />
+  <%end%>
+</p>
+<p>
+  Take a look at the <%=link_to "membership list", all_url%> to find out more information
+</p>

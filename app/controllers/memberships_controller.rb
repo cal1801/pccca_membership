@@ -132,7 +132,7 @@ class MembershipsController < ApplicationController
     @members = []
     Membership.where(payment_id: "pending").each do |member|
       member.update_attribute("payment_id", "no payment")
-      @members << member.first_name + " " + member.last_name + " - (" + member.membership_type + ")"
+      @members << member.first_name + " " + member.last_name + " - " + member.membership_type
     end
 
     MembershipMailer.error_email(@members).deliver_later
@@ -142,8 +142,11 @@ class MembershipsController < ApplicationController
     @members = []
     Membership.where(payment_id: "pending").each do |member|
       member.update_attributes(payment_date: Date.today(), payment_id: params["paymentid"])
-      @members << member.first_name + " " + member.last_name + " - (" + member.membership_type + ")"
+      @members << member.first_name + " " + member.last_name + " - " + member.membership_type
+      @organization = member.try(&:organization)
     end
+
+    MembershipMailer.success_email(@members, @organization).deliver_later
   end
 
   private

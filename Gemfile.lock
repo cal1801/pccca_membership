@@ -88,6 +88,12 @@ GEM
       xml-simple
     pg (0.21.0)
     popper_js (1.12.9)
+    postmark (1.10.0)
+      json
+      rake
+    postmark-rails (0.15.0)
+      actionmailer (>= 3.0.0)
+      postmark (~> 1.10.0)
     rack (1.6.8)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -171,6 +177,7 @@ DEPENDENCIES
   jquery-rails
   paypal-sdk-rest
   pg (~> 0.15)
+  postmark-rails
   rails (= 4.2.5)
   rails_12factor
   sass-rails (~> 5.0)

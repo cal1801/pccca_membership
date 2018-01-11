@@ -31,5 +31,8 @@ module PcccaMembership
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+
+    config.action_mailer.delivery_method = :postmark
+    config.action_mailer.postmark_settings = { :api_token => "3353c75b-d840-4dfc-bd9a-63f3fc1d2d09" }
   end
 end

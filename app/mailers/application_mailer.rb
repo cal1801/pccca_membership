@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: "joel@pccca.net"
+  default from: "membership@pccca.net"
   layout 'mailer'
 end
