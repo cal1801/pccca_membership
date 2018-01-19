@@ -1,6 +1,6 @@
 <h2>Student Membership for <%=Time.current.year%> ($25)</h2>
 <p>This special rate is extended to full or part-time students in an undergraduate or graduate program.</p>
-<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+<%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Student"%>
   <%=hidden_field_tag "price", "25"%>
   <div class="row mb-4">
@@ -46,12 +46,15 @@
     <%end%>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block mb-5">Register for Student Membership</button>
+  <button type="submit" id="submit" class="btn btn-primary btn-block mb-5">Register for Student Membership</button>
 <% end %>
 
 <script>
-  jQuery("#submit").on('click', function() {
-    jQuery(this).prop("disabled",true)
-    jQuery(this).html("Please Wait, we are processing your registration.")
-  })
+  $(document).ready(function () {
+    $("#memForm").submit(function () {
+      jQuery("#submit").prop("disabled",true)
+      jQuery("#submit").html("Please Wait, we are processing your registration.")
+      return true;
+    });
+  });
 </script>

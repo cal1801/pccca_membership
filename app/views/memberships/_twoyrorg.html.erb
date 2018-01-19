@@ -1,6 +1,6 @@
 <h2>Two-Year Organizational Membership ($665)</h2>
 <p>This membership package includes an individual membership for one staff person, two associate memberships for board/committee members and an associate membership for the head of each of your governing bodies (i.e. Executive Presbyter for a presbytery site, Head of Staff for a one-church site, etc.). If you would like to add more staff members to your Organizational Membership, please click on the link at the bottom of the screen. Your first additional staff person is $95 and each additional staff member after that is only $48 per person.</p>
-<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+<%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "2 Year Organizational"%>
   <%=hidden_field_tag "price", "665"%>
   <div class="row mb-4">
@@ -124,12 +124,34 @@
     <%end%>
   </div>
 
+  <span id="additional_member"></span>
+
+  <button type="button" id="add_member" class="btn btn-success mb-4" style="margin-top: -1rem">Add Staff Member</button>
+
   <button type="submit" id="submit" class="btn btn-primary btn-block mb-5">Register for Two-Year Organizational Membership</button>
 <% end %>
 
 <script>
-  jQuery("#submit").on('click', function() {
-    jQuery(this).prop("disabled",true)
-    jQuery(this).html("Please Wait, we are processing your registration.")
-  })
+  var additional = 0
+  $(document).ready(function () {
+    $("#memForm").submit(function () {
+      jQuery("#submit").prop("disabled",true)
+      jQuery("#submit").html("Please Wait, we are processing your registration.")
+      return true;
+    });
+  });
+
+  jQuery("#add_member").click(function() {
+    jQuery.ajax({
+      url: "<%=add_member_memberships_path%>",
+    })
+    additional++
+    if (additional == 1) {
+      $("#price").val(parseInt($("#price").val())+95)
+      $("h2").html("Two-Year Organizational Membership ($" + $("#price").val() + ")")
+    }else{
+      $("#price").val(parseInt($("#price").val())+48)
+      $("h2").html("Two-Year Organizational Membership ($" + $("#price").val() + ")")
+    }
+  });
 </script>

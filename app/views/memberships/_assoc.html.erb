@@ -8,7 +8,7 @@
 <li>Former members of PCCCA who have been selected for Lifetime Achievement by the Board and have been extended Emeritus Status in the organization (no annual dues are required)</li>
 <li>This membership level does not include the special company discounts.</li>
 </ul>
-<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+<%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Student"%>
   <%=hidden_field_tag "price", "75"%>
   <div class="row mb-4">
@@ -54,12 +54,15 @@
     <%end%>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block mb-5">Register for Associate Membership</button>
+  <button type="submit" id="submit" class="btn btn-primary btn-block mb-5">Register for Associate Membership</button>
 <% end %>
 
 <script>
-  jQuery("#submit").on('click', function() {
-    jQuery(this).prop("disabled",true)
-    jQuery(this).html("Please Wait, we are processing your registration.")
-  })
+  $(document).ready(function () {
+    $("#memForm").submit(function () {
+      jQuery("#submit").prop("disabled",true)
+      jQuery("#submit").html("Please Wait, we are processing your registration.")
+      return true;
+    });
+  });
 </script>

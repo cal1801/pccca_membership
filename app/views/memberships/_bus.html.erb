@@ -11,7 +11,7 @@
   <li>one "From One of Our Business Members" article in PCCCA’s enewsletter</li>
   <li>one postal mailing using the PCCCA mailing list (you ship the mailing with postage to us and we send it with mailing labels that include the name of the decision makers at all 160 Presbyterian camps and conference centers in the United States and Canada)</li>
 </ul>
-<%= form_tag("memberships", method: "post", class: "form-inline") do%>
+<%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Organizational"%>
   <%=hidden_field_tag "price", "520"%>
   <div class="row mb-4">
@@ -111,12 +111,15 @@
     <%end%>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block mb-5">Register for Business Membership</button>
+  <button type="submit" id="submit" class="btn btn-primary btn-block mb-5">Register for Business Membership</button>
 <% end %>
 
 <script>
-  jQuery("#submit").on('click', function() {
-    jQuery(this).prop("disabled",true)
-    jQuery(this).html("Please Wait, we are processing your registration.")
-  })
+  $(document).ready(function () {
+    $("#memForm").submit(function () {
+      jQuery("#submit").prop("disabled",true)
+      jQuery("#submit").html("Please Wait, we are processing your registration.")
+      return true;
+    });
+  });
 </script>

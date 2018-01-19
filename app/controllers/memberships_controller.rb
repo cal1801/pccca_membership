@@ -149,6 +149,10 @@ class MembershipsController < ApplicationController
     MembershipMailer.success_email(@members, @organization).deliver_later
   end
 
+  def add_member
+    @member = Membership.new
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_membership

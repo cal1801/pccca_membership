@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     collection do
       get 'error'
       get 'success'
+      get 'add_member'
     end
   end
 
