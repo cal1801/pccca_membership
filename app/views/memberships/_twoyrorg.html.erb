@@ -124,5 +124,12 @@
     <%end%>
   </div>
 
-  <button type="submit" class="btn btn-primary btn-block mb-5">Register for Two-Year Organizational Membership</button>
+  <button type="submit" id="submit" class="btn btn-primary btn-block mb-5">Register for Two-Year Organizational Membership</button>
 <% end %>
+
+<script>
+  jQuery("#submit").on('click', function() {
+    jQuery(this).prop("disabled",true)
+    jQuery(this).html("Please Wait, we are processing your registration.")
+  })
+</script>
