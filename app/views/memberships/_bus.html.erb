@@ -39,6 +39,11 @@
       <%=label_tag :zipcode, "Postal Code", class: "col-md-2", style: "justify-content: flex-end"%>
       <%=text_field_tag :zipcode, "", class: "form-control ml-3 mb-2 col-md-6"%>
     </div>
+    <div class="col-sm-12">If your company/organization is providing a special benefit for <a href="http://www.pccca.net/images/pdfs/MemberBenefitForm.pdf" target="_blank">PCCCA/LOM/UMCRM/OMA-UCC members</a>, you receive the discounted rate of $420 for PCCCA Business Membership.</div>
+    <div class="form-check col-sm-12">
+      <%=check_box_tag "provide_benefit", "yes", false, class: "form-check-input"%>
+      <div class="ml-3 mb-2 col-md-6 form-check-label" for="provide_benefit">Yes our business will provide a member benefit</div>
+    </div>
   </div>
 
   <div class="row mb-4">
@@ -121,5 +126,15 @@
       jQuery("#submit").html("Please Wait, we are processing your registration.")
       return true;
     });
+  });
+
+  jQuery("#provide_benefit").change(function() {
+    if ($('#provide_benefit').is(':checked')) {
+      $("#price").val(parseInt(420))
+      $("h2").html("Business Membership for <%=Time.current.year%> ($420)")
+    }else{
+      $("#price").val(parseInt(520))
+      $("h2").html("Business Membership for <%=Time.current.year%> ($520)")
+    }
   });
 </script>

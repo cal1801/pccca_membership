@@ -18,4 +18,13 @@ class MembershipMailer < ApplicationMailer
       :from => 'membership@pccca.net',
       :track_opens => 'true')
   end
+
+  def provide_benefit_email(organization)
+    @organization = organization
+    mail(
+      :subject => 'Organization Agreed to Membership Benefit',
+      :to  => 'joel@pccca.net',
+      :from => 'membership@pccca.net',
+      :track_opens => 'true')
+  end
 end

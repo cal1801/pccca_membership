@@ -89,6 +89,10 @@ class MembershipsController < ApplicationController
         member = Membership.create(member_params(member))
       end
 
+      if params["provide_benefit"] == "yes"
+        MembershipMailer.provide_benefit_email(params["organization"]).deliver_later
+      end
+
       # Capture redirect url
       redirect_url = @payment.links.find{|v| v.rel == "approval_url" }.href
       redirect_to redirect_url
