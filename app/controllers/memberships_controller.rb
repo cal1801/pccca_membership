@@ -143,14 +143,25 @@ class MembershipsController < ApplicationController
   end
 
   def success
-    @members = []
-    Membership.where(payment_id: "pending").each do |member|
-      member.update_attributes(payment_date: Date.today(), payment_id: params["paymentid"])
-      @members << member.first_name + " " + member.last_name + " - " + member.membership_type
-      @organization = member.try(&:organization)
-    end
+    payment = Payment.find(params[:paymentId])
+    if payment.execute(:payer_id => payment.payer.payer_info.payer_id)
+      @members = []
+      Membership.where(payment_id: "pending").each do |member|
+        member.update_attributes(payment_date: Date.today(), payment_id: params["paymentid"])
+        @members << member.first_name + " " + member.last_name + " - " + member.membership_type
+        @organization = member.try(&:organization)
+      end
 
-    MembershipMailer.success_email(@members, @organization).deliver_later
+      MembershipMailer.success_email(@members, @organization).deliver_later
+    else
+      @members = []
+      Membership.where(payment_id: "pending").each do |member|
+        member.update_attributes(payment_id: "failed")
+        @members << member.first_name + " " + member.last_name + " - " + member.membership_type
+        @organization = member.try(&:organization)
+      end
+      MembershipMailer.error_email(@members).deliver_later
+    end
   end
 
   def add_member
