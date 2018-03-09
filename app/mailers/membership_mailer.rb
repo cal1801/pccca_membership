@@ -14,7 +14,7 @@ class MembershipMailer < ApplicationMailer
     @organization = organization
     mail(
       :subject => 'New Membership Registered',
-      :to  => 'joel@pccca.net, callanfindeiss@gmail.com',
+      :to  => 'joel@pccca.net, callanfindeiss@gmail.com, nscotthend@gmail.com',
       :from => 'membership@pccca.net',
       :track_opens => 'true')
   end

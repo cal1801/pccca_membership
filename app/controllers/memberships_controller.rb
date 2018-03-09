@@ -84,7 +84,7 @@ class MembershipsController < ApplicationController
         member[:zipcode] = params[:zipcode]
         member[:url] = params[:url]
         member[:fax] = params[:fax]
-        member[:payment_id] = "pending"
+        member[:payment_id] = @payment.id
 
         member = Membership.create(member_params(member))
       end
@@ -146,8 +146,8 @@ class MembershipsController < ApplicationController
     payment = Payment.find(params[:paymentId])
     if payment.execute(:payer_id => payment.payer.payer_info.payer_id)
       @members = []
-      Membership.where(payment_id: "pending").each do |member|
-        member.update_attributes(payment_date: Date.today(), payment_id: params["paymentid"])
+      Membership.where(payment_id: payment.id).each do |member|
+        member.update_attributes(payment_date: Date.today(), payment_id: payment.id)
         @members << member.first_name + " " + member.last_name + " - " + member.membership_type
         @organization = member.try(&:organization)
       end
