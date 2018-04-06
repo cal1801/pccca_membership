@@ -166,6 +166,7 @@ class MembershipsController < ApplicationController
 
   def add_member
     @member = Membership.new
+    @type = params["type"]
   end
 
   private
