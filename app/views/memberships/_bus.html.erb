@@ -1,15 +1,15 @@
-<h2>Business Membership for <%=Time.current.year%> ($540)</h2>
+<h2>Business Membership for 2019 ($540)</h2>
 <p>Your business or organization has the opportunity to make important connections with Presbyterian camps and conference centers. If you have products and services that could support the ministries of these 150 sites in the United States and Canada, you will want to consider a membership that offers visibility through PCCCA’s enewsletters, website and Facebook page; use of the business member logo; and priority access and discounts on exhibit hall booths and sponsorship opportunities. To learn more about this program, please see the <%=link_to "PCCCA Business Membership brochure", "http://www.pccca.net/images/pdfs/BusinessMembership.pdf"%>.</p>
 <p>This membership level receives:</p>
 <ul>
-  <li>priority status for exhibit hall registration at the PCCCA Annual Conference</li>
-  <li>10% discount on exhibit hall booth registration and sponsorship opportunities at the PCCCA Annual Conference</li>
+  <li>priority status for exhibit hall registration at the OMC Great Gathering</li>
+  <li>10% discount on exhibit hall booth registration and sponsorship opportunities at the OMC Great Gathering</li>
   <li>use of the PCCCA business member logo for your website and publications</li>
   <li>a listing on the new Business Membership page on the PCCCA website</li>
   <li>a new member announcement in PCCCA’s enewsletter</li>
   <li>one new product announcement on PCCCA’s Facebook page</li>
   <li>one "From One of Our Business Members" article in PCCCA’s enewsletter</li>
-  <li>one postal mailing using the PCCCA mailing list (you ship the mailing with postage to us and we send it with mailing labels that include the name of the decision makers at all 160 Presbyterian camps and conference centers in the United States and Canada)</li>
+  <li>one postal mailing using the PCCCA mailing list (you ship the mailing with postage to us and we send it with mailing labels that include the name of the decision makers at all 150 Presbyterian camps and conference centers in the United States and Canada)</li>
 </ul>
 <%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Organizational"%>
@@ -39,10 +39,10 @@
       <%=label_tag :zipcode, "Postal Code", class: "col-md-2", style: "justify-content: flex-end"%>
       <%=text_field_tag :zipcode, "", class: "form-control ml-3 mb-2 col-md-6"%>
     </div>
-    <div class="col-sm-12">If your company/organization is currently providing a <a href="http://www.pccca.net/images/pdfs/MemberBenefitProviders2018.pdf" target="_blank">2018 special benefit for PCCCA/LOM/UMCRM/OMA-UCC members</a>, you receive the discounted rate of $440 for PCCCA Business Membership.</div>
+    <div class="col-sm-12">If your company/organization is currently providing a <a href="http://www.pccca.net/images/pdfs/MemberBenefitProviders.pdf" target="_blank">special benefit for PCCCA/LOM/UMCRM/OMA-UCC members</a>, you receive the discounted rate of $440 for PCCCA Business Membership.</div>
     <div class="form-check col-sm-12">
       <%=check_box_tag "provide_benefit", "yes", false, class: "form-check-input"%>
-      <div class="ml-3 mb-2 col-md-6 form-check-label" for="provide_benefit">Yes, our business appears on the 2018 list and qualifies for this discount.</div>
+      <div class="ml-3 mb-2 col-md-6 form-check-label" for="provide_benefit">Yes, our business appears on the list and qualifies for this discount.</div>
     </div>
   </div>
 
