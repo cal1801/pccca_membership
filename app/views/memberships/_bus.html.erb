@@ -1,4 +1,4 @@
-<h2>Business Membership for 2019 ($540)</h2>
+<h2>Business Membership for 2019 ($565)</h2>
 <p>Your business or organization has the opportunity to make important connections with Presbyterian camps and conference centers. If you have products and services that could support the ministries of these 150 sites in the United States and Canada, you will want to consider a membership that offers visibility through PCCCA’s enewsletters, website and Facebook page; use of the business member logo; and priority access and discounts on exhibit hall booths and sponsorship opportunities. To learn more about this program, please see the <%=link_to "PCCCA Business Membership brochure", "http://www.pccca.net/images/pdfs/BusinessMembership.pdf"%>.</p>
 <p>This membership level receives:</p>
 <ul>
@@ -13,7 +13,7 @@
 </ul>
 <%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Organizational"%>
-  <%=hidden_field_tag "price", "540"%>
+  <%=hidden_field_tag "price", "565"%>
   <div class="row mb-4">
     <div class="form-group col-sm-12">
       <%=label_tag :organization, "Business/Organization", class: "col-md-2", style: "justify-content: flex-end"%>
@@ -39,7 +39,7 @@
       <%=label_tag :zipcode, "Postal Code", class: "col-md-2", style: "justify-content: flex-end"%>
       <%=text_field_tag :zipcode, "", class: "form-control ml-3 mb-2 col-md-6"%>
     </div>
-    <div class="col-sm-12">If your company/organization is currently providing a <a href="http://www.pccca.net/images/pdfs/MemberBenefitProviders.pdf" target="_blank">special benefit for PCCCA/LOM/UMCRM/OMA-UCC members</a>, you receive the discounted rate of $440 for PCCCA Business Membership.</div>
+    <div class="col-sm-12">If your company/organization is currently providing a <a href="http://www.pccca.net/images/pdfs/MemberBenefitProviders.pdf" target="_blank">special benefit for PCCCA/LOM/UMCRM/OMA-UCC members</a>, you receive the discounted rate of $465 for PCCCA Business Membership.</div>
     <div class="form-check col-sm-12">
       <%=check_box_tag "provide_benefit", "yes", false, class: "form-check-input"%>
       <div class="ml-3 mb-2 col-md-6 form-check-label" for="provide_benefit">Yes, our business appears on the list and qualifies for this discount.</div>
@@ -130,11 +130,11 @@
 
   jQuery("#provide_benefit").change(function() {
     if ($('#provide_benefit').is(':checked')) {
-      $("#price").val(parseInt(440))
-      $("h2").html("Business Membership for <%=Time.current.year%> ($440)")
+      $("#price").val(parseInt(465))
+      $("h2").html("Business Membership for <%=Time.current.year%> ($465)")
     }else{
-      $("#price").val(parseInt(540))
-      $("h2").html("Business Membership for <%=Time.current.year%> ($540)")
+      $("#price").val(parseInt(565))
+      $("h2").html("Business Membership for <%=Time.current.year%> ($565)")
     }
   });
 </script>

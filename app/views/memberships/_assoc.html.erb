@@ -1,4 +1,4 @@
-<h2>Associate Membership for 2019 ($75)</h2>
+<h2>Associate Membership for 2019 ($80)</h2>
 <p>This membership level is eligible to:</p>
 <ul>
 <li>Committee and board members of camp, conference or retreat ministries</li>
@@ -10,7 +10,7 @@
 </ul>
 <%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Associate"%>
-  <%=hidden_field_tag "price", "75"%>
+  <%=hidden_field_tag "price", "80"%>
   <div class="row mb-4">
     <%=fields_for 'members[]', @members[0] do |m|%>
       <div class="form-group col-sm-12">
