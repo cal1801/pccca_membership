@@ -1,4 +1,4 @@
-<h2>Student Membership for 2019 ($30)</h2>
+<h2>Student Membership for <%=Date.today.year%> ($30)</h2>
 <p>This special rate is extended to full or part-time students in an undergraduate or graduate program.</p>
 <%= form_tag("memberships", method: "post", class: "form-inline", id: "memForm") do%>
   <%=hidden_field_tag "type", "Student"%>
