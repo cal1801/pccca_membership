@@ -27,5 +27,5 @@ development:
 production:
   <<: *default
   mode: live
-  client_id: AYYpyZgn5BYUkkPiK1H_TfhDM8h_K4iDLy2LGUckdTbnR3CroCWmdvmgeAVjq3jvnpCkkYo125oPCU7h
-  client_secret: EDPoQxkZQnoV2e7fdJZ908niJ2I0qrsImlOu-jcHPvlGrMx_BX3wowMpLwsv0A7tUE1wPkl-5L1-flHS
+  client_id: Aae4LPAFXbzqYffN0tB4DXS47LCQOGKIsvcbTjobGGiOOYcOEpLpshI0fNWgY-RXabOATrpIHr4NK5Wu
+  client_secret: ELUrTGEBDhLApmTGznd8e0Cat_66IkBFczNdPktdtUvtM0IUOG0hTWLcFJOz9bMlIMfxmmMJ82YxXmQh
