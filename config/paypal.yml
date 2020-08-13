@@ -29,3 +29,5 @@ production:
   mode: live
   client_id: Aae4LPAFXbzqYffN0tB4DXS47LCQOGKIsvcbTjobGGiOOYcOEpLpshI0fNWgY-RXabOATrpIHr4NK5Wu
   client_secret: ELUrTGEBDhLApmTGznd8e0Cat_66IkBFczNdPktdtUvtM0IUOG0hTWLcFJOz9bMlIMfxmmMJ82YxXmQh
+  ssl_options:
+    ca_file: null
